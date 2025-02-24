@@ -1,17 +1,64 @@
 <?php
+    // Definición de variables con nombres descriptivos
     $Nombre = "DAVID JESUS CORONADO REYES <br>";
     $nombre = "david jesus coronado reyes <br>";
 
-    $numero = 12;
-    $numeroFloat = 123.123;
+    // Definir variables numéricas
+    $numero = 12; // Entero
+    $numeroFloat = 123.123; // Número decimal (float)
 
-    echo "el nuermo entero:". $numero ."<br> este tipo de numero es flotante:". $numeroFloat."<br>";
+    // Mostrar el número entero con concatenación para mejor legibilidad
+    echo "El número entero es: " . $numero . "<br>";
 
-    $cadena = "hola mundo <br>";
+    // Mostrar el número flotante (decimal)
+    echo "Este tipo de número es flotante: " . $numeroFloat . "<br>";
 
-    echo " la cadena es: $cadena";
+    // Definir una variable de tipo string para un saludo
+    $greeting = "hola mundo <br>";
+
+    // Mostrar el saludo
+    echo "El saludo es: " . $greeting;
+
+    // Mostrar el nombre en minúsculas
     echo $nombre;
+
+    // Mostrar el nombre en mayúsculas
     echo $Nombre;
+
+    // Escapar caracteres especiales
+    $datos = "hola 'David' tu tienes una edad: \"24\" <br>";  // Usamos las comillas dobles escapadas dentro de la cadena
+
+    // Mostrar los datos con el valor escapado
+    echo $datos;
+
+    // variables asigandas
+    $variable = 34;
+    $variable_negativo = -$variable;
+
+    // operador unario
+    echo $variable_negativo . "<br>";
+
+    //modulo
+    $num1= 5;
+    $num2= 10;
+    $num3= 5;
+
+    echo $num1 == $num3;
+    echo "<br>";
+    var_dump($num1 == $num3); // valores iguales
+    echo "<br>";
+    var_dump($num1 != $num3); // valores si son diferentes
+    echo "<br>";
+    var_dump($num1 && $num3); // valores y
+    echo "<br>";
+
+    // operadores de asignacion combinada
+    $a1 = 5;
+    echo "mi primer numero es igual a: " . $a1 . "<br>";
+    $a2 = ++$a1;
+    echo "mi primer numero es igual a 5 pero se le aumenta: " . $a2 . "<br>";
+
+    
 
 
 
