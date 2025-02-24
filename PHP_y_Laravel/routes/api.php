@@ -1,26 +1,28 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Http;
 
+// Endpoint de prueba
 Route::get('/', function () {
-    return view('home');
+    return response()->json(['message' => 'Bienvenido a la API']);
 });
 
-
-// Ruta en web.php llama a esta API
-Route::get('home/categoria/json', function() {
+// Devuelve todos los artistas en JSON
+Route::get('seleccion/json', function () {
     $TiposMus = [
         'pop' => ['Aleck Sinteck', 'Jaunes', 'Miranda', 'Paulina Rubio'],
         'rock' => ['Maná', 'Cafe Tacuba', 'Elefante'],
         'reggaeton' => ['Daddy Yankee', 'Wisin Yandel', 'Bad Bunny', 'Ozuna'],
         'banda' => ['El Recodo', 'Julion Alvarez', 'Calibre 50', 'Tigres del Norte'],
     ];
-    $response = Http::timeout(5)->get(url('api/categorias/json'));
-    return response()->json($TiposMus); // devuelve JSON con todas las categorias
+
+    return response()->json($TiposMus);
 });
 
-// euta de prueba en la API
-Route::get('seleccionar', function () {
-    return response()->json(['mensaje' => 'API de productos']);
+// Otra ruta simple
+Route::get('productos', function () {
+    return response()->json(['producto1' => 'Guitarra', 'producto2' => 'Piano']);
 });
+
+ 

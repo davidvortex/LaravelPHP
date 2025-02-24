@@ -3,23 +3,35 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 
-Route::get('categorias/json', function () {
-    return response()->json(['mensaje' => 'Prueba exitosa']);
-})->withoutMiddleware('auth:sanctum');
+Route::prefix('api')->group(base_path('routes/api.php'));
+
+
 
 
 // Pagina principal
 Route::get('/', function () {
     return view('welcome');
+
 });
 
 // categorias de musica
 Route::get('categorias', function (\Illuminate\Http\Request $request) {
     $categorias_musica = [
-        'pop' => ['Aleck Sinteck', 'Jaunes', 'Miranda', 'Paulina Rubio'],
-        'rock' => ['Maná', 'Cafe Tacuba', 'Elefante'],
-        'reggaeton' => ['Daddy Yankee', 'Wisin Yandel', 'Bad Bunny', 'Ozuna'],
-        'banda' => ['El Recodo', 'Julion Alvarez', 'Calibre 50', 'Tigres del Norte'],
+        'pop' => ['Aleck Sinteck',
+                    'Jaunes',
+                    'Miranda',
+                    'Paulina Rubio'],
+        'rock' => ['Maná',
+                    'Cafe Tacuba',
+                    'Elefante'],
+        'reggaeton' => ['Daddy Yankee',
+                        'Wisin Yandel',
+                        'Bad Bunny',
+                        'Ozuna'],
+        'banda' => ['El Recodo',
+                    'Julion Alvarez',
+                    'Calibre 50',
+                    'Tigres del Norte'],
     ];
 
     // Obtener el parámetro de la URL
@@ -70,15 +82,29 @@ Route::prefix('categorias')->group(function () {
     Route::get('{NombreMusica}', function (String $NombreMusica) {
         echo 'Elección de la música es: ' . $NombreMusica;
     });
+
+    return view('produccion');
+
 });
 
 // ruta `eleccion/top` con parámetro opcional
 Route::get('eleccion/top/{TiposMusicales?}', function (?string $TiposMusicales = null) {
     $TiposMus = [
-        'pop' => ['Aleck Sinteck', 'Jaunes', 'Miranda', 'Paulina Rubio'],
-        'rock' => ['Maná', 'Cafe Tacuba', 'Elefante'],
-        'reggaeton' => ['Daddy Yankee', 'Wisin Yandel', 'Bad Bunny', 'Ozuna'],
-        'banda' => ['El Recodo', 'Julion Alvarez', 'Calibre 50', 'Tigres del Norte'],
+        'pop' => ['Aleck Sinteck',
+                    'Jaunes',
+                    'Miranda',
+                    'Paulina Rubio'],
+        'rock' => ['Maná',
+                    'Cafe Tacuba',
+                    'Elefante'],
+        'reggaeton' => ['Daddy Yankee',
+                        'Wisin Yandel',
+                        'Bad Bunny',
+                        'Ozuna'],
+        'banda' => ['El Recodo',
+                    'Julion Alvarez',
+                    'Calibre 50',
+                    'Tigres del Norte'],
     ];
 
     if (is_null($TiposMusicales)) {
@@ -101,10 +127,21 @@ Route::get('eleccion/top/{TiposMusicales?}', function (?string $TiposMusicales =
 // devuelve todos los artistas en JSON
 Route::get('seleccion/json', function () {
     $TiposMus = [
-        'pop' => ['Aleck Sinteck', 'Jaunes', 'Miranda', 'Paulina Rubio'],
-        'rock' => ['Maná', 'Cafe Tacuba', 'Elefante'],
-        'reggaeton' => ['Daddy Yankee', 'Wisin Yandel', 'Bad Bunny', 'Ozuna'],
-        'banda' => ['El Recodo', 'Julion Alvarez', 'Calibre 50', 'Tigres del Norte'],
+        'pop' => ['Aleck Sinteck',
+                    'Jaunes',
+                    'Miranda',
+                    'Paulina Rubio'],
+        'rock' => ['Maná',
+                    'Cafe Tacuba',
+                    'Elefante'],
+        'reggaeton' => ['Daddy Yankee',
+                        'Wisin Yandel',
+                        'Bad Bunny',
+                        'Ozuna'],
+        'banda' => ['El Recodo',
+                    'Julion Alvarez',
+                    'Calibre 50',
+                    'Tigres del Norte'],
     ];
 
     $seleccion = [];
@@ -127,3 +164,5 @@ Route::get('api/json', function () {
 Route::get('/home', function () {
     return view('welcome');
 });
+
+
