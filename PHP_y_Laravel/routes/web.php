@@ -1,163 +1,93 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
+
+Route::get('categorias/json', function () {
+    return response()->json(['mensaje' => 'Prueba exitosa']);
+})->withoutMiddleware('auth:sanctum');
 
 
-// Route::get('/', function () {
-// x|return view('welcome');
-// });
-
-
-// esto puede ser una pagina principal
+// Pagina principal
 Route::get('/', function () {
     return view('welcome');
 });
 
-// categorias
-Route::get('categorias', function (\Illuminate\Http\Request $repuesta) {
-
-    dd($repuesta);
+// categorias de musica
+Route::get('categorias', function (\Illuminate\Http\Request $request) {
     $categorias_musica = [
-        'pop' => [
-            'Aleck Sinteck',
-            'Jaunes',
-            'Miranda',
-            'Paulina Rubio',
-        ],
-        'rock' => [
-            'Maná',
-            'Cafe Tacuba',
-            'Elefante',
-        ],
-        'regueaton' => [
-            'Daddy Yanke',
-            'Wisin Yandel',
-            'Bad Bunny',
-            'Ozuna',
-        ],
-        'banda' => [
-            'El Recodo',
-            'Julion Alvarez',
-            'Calibre 50',
-            'Tigres del Norte'
-        ],
+        'pop' => ['Aleck Sinteck', 'Jaunes', 'Miranda', 'Paulina Rubio'],
+        'rock' => ['Maná', 'Cafe Tacuba', 'Elefante'],
+        'reggaeton' => ['Daddy Yankee', 'Wisin Yandel', 'Bad Bunny', 'Ozuna'],
+        'banda' => ['El Recodo', 'Julion Alvarez', 'Calibre 50', 'Tigres del Norte'],
     ];
 
+    // Obtener el parámetro de la URL
+    $nombreMusica = $request->input('nombremusica');
 
-
-    // Obtener el valor del parámetro variable
-    $nombreMusica = $repuesta->input('nombremusica');
-
-    // Si el parámetro 'nombremusica' es nulo, mostrar todas las categorías y sus artistas
-    if (is_null($nombreMusica)) { // si es nullo nombre musica significa que no se solicito
-        // ayuda a recorrer el array de mi $categorias_musica
+    // Si no se solicita un género, muestra todos
+    if (is_null($nombreMusica)) {
         foreach ($categorias_musica as $genero => $artistas) {
-            echo "Musica de $genero :<br>";
+            echo "Música de $genero:<br>";
             foreach ($artistas as $artista) {
                 echo "* $artista <br>";
             }
             echo "<br>";
         }
     } else {
-        // Verificar si la categoría existe
         if (array_key_exists($nombreMusica, $categorias_musica)) {
-            echo "Musica de $nombreMusica:<br>";
-            //ayuda a rrecorrer el array de $categorias_musica
+            echo "Música de $nombreMusica:<br>";
             foreach ($categorias_musica[$nombreMusica] as $artista) {
                 echo "* $artista <br>";
             }
         } else {
-            // caso de que no exista la categoria
-            echo "no existe la categoria men.";
+            echo "No existe la categoría.";
         }
     }
 });
 
-/*
-Route::get('categorias/pop', function () {
-    echo 'musica de pop' ;
-});
-
-Route::get('categorias/rock', function () {
-    echo 'musica de rock' ;
-});
-
-Route::get('categorias/regueaton', function () {
-    echo 'musica de reguaton' ;
-});
-
-Route::get('categorias/banda', function () {
-    echo 'musica de banda' ;
-});
-*/
-
-// este metoodo me ayuda para no poner en las demas profijos categoriacs
+// grupo de rutas con prefijo `categorias`
 Route::prefix('categorias')->group(function () {
-
-
     Route::prefix('ofertas')->group(function () {
         Route::get('ultimo-mes', function () {
-            echo 'ultimo MES para comprar su boleto';
+            echo 'Último mes para comprar su boleto';
         });
 
         Route::get('ultima-semana', function () {
-            echo 'ultimo SEMANA para comprar su boleto';
+            echo 'Última semana para comprar su boleto';
         });
     });
 
-
     Route::get('top', function () {
-        echo 'Cantante mas escuchado: ' . 'CANTANTE MAS ESCUCHADO';
+        echo 'Cantante más escuchado: ' . 'CANTANTE MÁS ESCUCHADO';
     });
 
     Route::get('conciertos', function () {
-        echo 'conciertos de la banda: ' . 'LAS BANDAS';
+        echo 'Conciertos de la banda: ' . 'LAS BANDAS';
     });
 
-    // Linea original
-    // Route::get('categorias/{NombreMusica}', function (String $NombreMusica) {
+    // ruta dinamica
     Route::get('{NombreMusica}', function (String $NombreMusica) {
-        echo 'Eleccion de la musica es: ' . $NombreMusica;
+        echo 'Elección de la música es: ' . $NombreMusica;
     });
 });
 
-// una funcion que necesita una variable para el parametro
-Route::get('eleccion/top', function (?string $TiposMusicales = null) {
+// ruta `eleccion/top` con parámetro opcional
+Route::get('eleccion/top/{TiposMusicales?}', function (?string $TiposMusicales = null) {
     $TiposMus = [
-        'pop' => [
-            'Aleck Sinteck',
-            'Jaunes',
-            'Miranda',
-            'Paulina Rubio',
-        ],
-        'rock' => [
-            'Maná',
-            'Cafe Tacuba',
-            'Elefante',
-        ],
-        'regueaton' => [
-            'Daddy Yanke',
-            'Wisin Yandel',
-            'Bad Bunny',
-            'Ozuna',
-        ],
-        'banda' => [
-            'El Recodo',
-            'Julion Alvarez',
-            'Calibre 50',
-            'Tigres del Norte'
-        ],
+        'pop' => ['Aleck Sinteck', 'Jaunes', 'Miranda', 'Paulina Rubio'],
+        'rock' => ['Maná', 'Cafe Tacuba', 'Elefante'],
+        'reggaeton' => ['Daddy Yankee', 'Wisin Yandel', 'Bad Bunny', 'Ozuna'],
+        'banda' => ['El Recodo', 'Julion Alvarez', 'Calibre 50', 'Tigres del Norte'],
     ];
-    // el usuario no selecciona un tipo de musica
+
     if (is_null($TiposMusicales)) {
-        // Mostrar todos los géneros y sus artistas
-        foreach ($TiposMus as $NombreMusicaArray) {
-            foreach ($NombreMusicaArray as $Musica) {
+        foreach ($TiposMus as $artistas) {
+            foreach ($artistas as $Musica) {
                 echo $Musica . '<br>';
             }
         }
     } else {
-        // Verificar si el tipo musical existe
         if (isset($TiposMus[$TiposMusicales])) {
             foreach ($TiposMus[$TiposMusicales] as $Musica) {
                 echo $Musica . '<br>';
@@ -168,43 +98,32 @@ Route::get('eleccion/top', function (?string $TiposMusicales = null) {
     }
 });
 
-// Nos de vuelve los productos
+// devuelve todos los artistas en JSON
 Route::get('seleccion/json', function () {
     $TiposMus = [
-        'pop' => [
-            'Aleck Sinteck',
-            'Jaunes',
-            'Miranda',
-            'Paulina Rubio',
-        ],
-        'rock' => [
-            'Maná',
-            'Cafe Tacuba',
-            'Elefante',
-        ],
-        'regueaton' => [
-            'Daddy Yanke',
-            'Wisin Yandel',
-            'Bad Bunny',
-            'Ozuna',
-        ],
-        'banda' => [
-            'El Recodo',
-            'Julion Alvarez',
-            'Calibre 50',
-            'Tigres del Norte'
-        ],
+        'pop' => ['Aleck Sinteck', 'Jaunes', 'Miranda', 'Paulina Rubio'],
+        'rock' => ['Maná', 'Cafe Tacuba', 'Elefante'],
+        'reggaeton' => ['Daddy Yankee', 'Wisin Yandel', 'Bad Bunny', 'Ozuna'],
+        'banda' => ['El Recodo', 'Julion Alvarez', 'Calibre 50', 'Tigres del Norte'],
     ];
 
     $seleccion = [];
 
-    foreach($TiposMus as $TiposMusArrary){
-        foreach($TiposMusArrary as $selecciones){
-            $seleccion[] = $selecciones;
+    foreach ($TiposMus as $genero => $artistas) {
+        foreach ($artistas as $artista) {
+            $seleccion[] = $artista;
         }
     }
 
-    return new \Illuminate\Http\JsonResponse($seleccion);
-    // return \Illuminate\Support\Facades\Response::json($seleccion);
+    return response()->json($seleccion);
+});
 
+// ruta simple para API
+Route::get('api/json', function () {
+    echo 'API de productos';
+});
+
+// ruta adicional para `/home`
+Route::get('/home', function () {
+    return view('welcome');
 });
