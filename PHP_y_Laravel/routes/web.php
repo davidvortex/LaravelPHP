@@ -11,17 +11,16 @@ Route::prefix('api')->group(base_path('routes/api.php'));
 // Pagina principal
 Route::get('/', function () {
     return view('welcome');
-
 });
 
 // categorias de musica
 Route::get('categorias', function (\Illuminate\Http\Request $request) {
     $categorias_musica = [
-        'pop' => ['Aleck Sinteck',
+        'pop' => [  'Aleck Sinteck',
                     'Jaunes',
                     'Miranda',
                     'Paulina Rubio'],
-        'rock' => ['Maná',
+        'rock' => [ 'Maná',
                     'Cafe Tacuba',
                     'Elefante'],
         'reggaeton' => ['Daddy Yankee',
@@ -90,11 +89,11 @@ Route::prefix('categorias')->group(function () {
 // ruta `eleccion/top` con parámetro opcional
 Route::get('eleccion/top/{TiposMusicales?}', function (?string $TiposMusicales = null) {
     $TiposMus = [
-        'pop' => ['Aleck Sinteck',
+        'pop' => [  'Aleck Sinteck',
                     'Jaunes',
                     'Miranda',
                     'Paulina Rubio'],
-        'rock' => ['Maná',
+        'rock' => [ 'Maná',
                     'Cafe Tacuba',
                     'Elefante'],
         'reggaeton' => ['Daddy Yankee',
@@ -127,11 +126,11 @@ Route::get('eleccion/top/{TiposMusicales?}', function (?string $TiposMusicales =
 // devuelve todos los artistas en JSON
 Route::get('seleccion/json', function () {
     $TiposMus = [
-        'pop' => ['Aleck Sinteck',
+        'pop' => [  'Aleck Sinteck',
                     'Jaunes',
                     'Miranda',
                     'Paulina Rubio'],
-        'rock' => ['Maná',
+        'rock' => [ 'Maná',
                     'Cafe Tacuba',
                     'Elefante'],
         'reggaeton' => ['Daddy Yankee',
