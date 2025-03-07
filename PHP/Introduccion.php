@@ -22,4 +22,3 @@
     echo Animales[2];
 
 
-?>
