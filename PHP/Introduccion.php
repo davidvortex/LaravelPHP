@@ -3,12 +3,15 @@
     $fecha  = date("d/m/Y");
     echo "La Fecha de hoy es: ". $fecha;
     $nombre = 'David Jesus Coronado Reyes';
-
+    echo "<br>";
 
     echo 'tu nombre es: '.$nombre.', con la fecha de hoy: '.$fecha;
+    echo "<br>";
     // diferentes tipos de imprimir 
     echo "tu nombre es: $nombre, con la fecha de hoy: $fecha ";
-    
+    echo "<br>";
+
+
     define('CURSO', 'PHP ');
     echo CURSO;
 
@@ -41,23 +44,60 @@
         echo "las dos canedas son difernetes";
     }
 
+    echo "<br>";
+    echo "<br>";
     echo substr($cadenas1, 1);
+    echo "<br>";
     echo substr($cadenas1, 1,3);
+    echo "<br>";
     echo substr($cadenas1, -2);
+    echo "<br>";
     echo strtoupper($cadenas1);
+    echo "<br>";
     echo ucwords($cadenas1);
+    echo "<br>";
     $cadensa3 = "hoola mundo";
     echo str_replace("mundo","eee", $cadenas1 );
-
+    echo "<br>";
+    echo "<br>";
 
     // Array
 
     $Contenido = [
-        'nombre' => 'David Jesus Coronado Reyes',
-        'correo' => 'david_2428106@hotmail.com',
+        [
+            'nombre' => 'David Jesus Coronado Reyes',
+            'correo' => 'david_2428106@hotmail.com',
+            'telefono' => '2342341232',
+            'direccion' => [
+                'pais' => 'Mexico',
+                'estado' => 'Morelos',
+            ]
+        ],
+        [
+            'nombre' => 'Coral Tepez Cortez',
+            'correo' => 'Coratepez@hotmail.com',
+            'telefono' => '8889433855',
+        ],
+        [
+            'nombre' => 'Hector Octavio Mendez Herrera',
+            'correo' => 'HectorMert@hotmail.com',
+            'telefono' => '3334452356',
+        ],
     ];
 
-    echo "el alumno indice 5 es esta en la posicion" . $Contenido['nomrbe'];
+    echo "Primeros datos : " . $Contenido[0]['nombre'];
+    echo "<br>";
+    echo "Primeros datos : " . $Contenido[0]['direccion']['pais'];
+    echo "<br>";
+    echo "<br>";
+
+    foreach($Contenido as $recorrer){
+        echo $recorrer['nombre'] . "<br>";
+        echo $recorrer['correo'] . "<br>";
+        echo $recorrer['telefono'] . "<br>";
+    }
+    echo "<hr>";
+
     
 
 
