@@ -44,6 +44,22 @@
     echo substr($cadenas1, 1);
     echo substr($cadenas1, 1,3);
     echo substr($cadenas1, -2);
+    echo strtoupper($cadenas1);
+    echo ucwords($cadenas1);
     $cadensa3 = "hoola mundo";
     echo str_replace("mundo","eee", $cadenas1 );
+
+
+    // Array
+
+    $Contenido = [
+        'nombre' => 'David Jesus Coronado Reyes',
+        'correo' => 'david_2428106@hotmail.com',
+    ];
+
+    echo "el alumno indice 5 es esta en la posicion" . $Contenido['nomrbe'];
+    
+
+
+
 
