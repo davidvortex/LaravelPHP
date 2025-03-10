@@ -98,7 +98,36 @@
     }
     echo "<hr>";
 
+    $array = [1,2,3];
     
+    list($A,$B,$C) = $array;
+    echo $B;
+    echo "<br>";
+    $array = range(1,20);
+    echo "<br>";
+    var_dump($array);
+    echo "<br>";
+    echo $array[5];
+    echo "<br>";
+    echo count($array);
+    echo "<br>";
+
+
+    $nombres = ['david','iris','elizabeth'];    
+    // para borrar una parte de la funcino se usar
+    // unset($nombre[2]);
+
+    if (in_array('elizabeth', $nombres)){
+        echo "el valor buscado se encuentra del array";
+    }else{
+        echo "el valor buscado no se encuentra";
+    }
+    
+    echo "<hr>";
+
+    echo "Formularios";
+
+
 
 
 
