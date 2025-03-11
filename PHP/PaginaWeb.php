@@ -1,86 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formulario</title>
 </head>
 <body>
-    
-    Usando el motodo GET
+
+    <h1>Formulario</h1>
+
+    <!-- Formulario GET -->
+    <h2>Usando el método GET</h2>
     <form action="Introduccion.php" method="GET">
-        <label>
-            Nombre:
-            <input type="text" name="nombre2">
-        </label>
-        <br>
-
-        <label>
-            Edad:
-            <input type="number" name="edad1">
-        </label>
-        <br>
-
+        <label>Nombre: <input type="text" name="nombre2"></label><br>
+        <label>Edad: <input type="number" name="edad1"></label><br>
 
         <p>Sexo:</p>
-        <label>
-            <input type="radio" name="sexo" value="Masculino">
-            Masculino:
-        </label>
-        <label>
-            <input type="radio" name="sexo" value="Femenino">
-            Femenino:
-        </label>
-        <br>
-
+        <label><input type="radio" name="sexo" value="Masculino"> Masculino</label>
+        <label><input type="radio" name="sexo" value="Femenino"> Femenino</label><br>
 
         <p>Roles:</p>
-        <label>
-            <input type="checkbox" name="roles[]" value="Administrador">
-            Administrador:
-        </label>
-        <label>
-            <input type="checkbox" name="roles[]" value="Auxiliar">
-            Auxiliar:
-        </label>
-        <label>
-            <input type="checkbox" name="roles[]" value="Clientes">
-            Clientes:
-        </label>
-        <br>
-        <br>
+        <label><input type="checkbox" name="roles[]" value="Administrador"> Administrador</label>
+        <label><input type="checkbox" name="roles[]" value="Auxiliar"> Auxiliar</label>
+        <label><input type="checkbox" name="roles[]" value="Clientes"> Clientes</label><br><br>
+
+        <label>Imagen:<br><input type="file" name="imagen"></label><br><br>
+
         <button type="submit">Enviar</button>
     </form>
 
-    <br>
-    <br>
+    <hr>
 
+    <!-- Formulario POST -->
+    <h2>Usando el método POST</h2>
+    <form action="Introduccion.php" method="POST" enctype="multipart/form-data">
+        <label>Nombre: <input type="text" name="nombre3"></label><br>
+        <label>Edad: <input type="number" name="edad2"></label><br>
+
+        <p>Sexo:</p>
+        <label><input type="radio" name="sexo2" value="Masculino"> Masculino</label>
+        <label><input type="radio" name="sexo2" value="Femenino"> Femenino</label><br>
+
+        <p>Roles:</p>
+        <label><input type="checkbox" name="roles2[]" value="Administrador"> Administrador</label>
+        <label><input type="checkbox" name="roles2[]" value="Auxiliar"> Auxiliar</label>
+        <label><input type="checkbox" name="roles2[]" value="Clientes"> Clientes</label><br><br>
+
+        <label>Imagen:<br><input type="file" name="imagen"></label><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
 
     <hr>
-    Usando el motodo POST
 
+    <!-- Formulario REQUEST -->
+    <h2>Usando el método REQUEST</h2>
     <form action="Introduccion.php" method="POST">
-        <label>
-            Nombre:
-            <input type="text" name="nombre3">
-        </label>
-        <br>
-        <button type="submit">Enviar</button>
-    </form>
-
-    <br>
-    <br>
-
-
-    <hr>
-    Usando el motodo REQUEST
-
-    <form action="Introduccion.php" method="REQUEST">
-        <label>
-            Nombre:
-            <input type="text" name="nombre4">
-        </label>
-        <br>
+        <label>Nombre: <input type="text" name="nombre4"></label><br>
+        <label>Edad: <input type="number" name="edad3"></label><br>
         <button type="submit">Enviar</button>
     </form>
 
