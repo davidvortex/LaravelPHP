@@ -126,6 +126,28 @@
     echo "<hr>";
 
     echo "Formularios";
+    $nombre2 = "Alicia Reyes";
+    $nombre3 = "David Lopez";
+    $nombre4 = "David Coronado";
+
+    
+    $nombre2 = $_GET['nombre2'];
+    $edad1 = $_GET['edad1'];
+    echo "<p> EL nombre del usuario es: $nombre2 </p>";
+    echo "<p> La edad del usuario es: $edad1 </p>";
+    echo "<br>";
+    $nombre3 = $_POST['nombre3'];
+    echo "<p> EL nombre del usuario es: $nombre3 </p>";
+    echo "<p> La edad del usuario es: $edad2 </p>";
+    echo "<br>";
+    $nombre4 = $_REQUEST['nombre4'];
+    echo "<p> EL nombre del usuario es: $nombre4 </p>";
+    echo "<p> La edad del usuario es: $edad3 </p>";
+    echo "<br>";
+
+
+
+
 
 
 
