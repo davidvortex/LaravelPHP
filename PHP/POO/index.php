@@ -2,27 +2,26 @@
 
 require_once 'POO_php.php';
 
+// Un objeto es una instancia de una clase
+$persona1 = new Persona("David", "Coronado", 20);
 
-// un objeto  es una instancia de una clase
-$persona1 = new Persona;
-
-$persona1->nombre = "David";
-$persona1->apellido = "Coronado";
+/*
+$persona1->setNombre("David"); 
+$persona1->setApellido("Coronado");
 $persona1->edad = 20;
+*/
 
-$persona2 = new Persona;
-$persona2->nombre = "Elizabeth";
-$persona2->apellido = "Codoy";
+$persona2 = new Persona("Jorge", "Perez", 22);
+/*
+$persona2->setNombre("Jorge");
+$persona2->setApellido("Perez");
 $persona2->edad = 22;
+*/
 
-
-echo "El nombre de la persona 1 es: ". $persona1->nombre. ". Su edad que tiene: ". $persona1->edad;
+echo "El nombre de la persona 1 es: " . $persona1->getNombre() . ". Su edad que tiene: " . $persona1->edad;
 echo "<br>";
-echo "El nombre de la persona 2 es: ". $persona2->nombre. ". Su Apellido es: ". $persona2->apellido;
+echo "El nombre de la persona 2 es: " . $persona2->getNombre() . ". Su Apellido es: " . $persona2->getApellido();
 echo "<br>";
-
-
-
 
 echo "<br><br><br>";
 echo "<center>Hecho por David Jesus Coronado Reyes </center><br>";
