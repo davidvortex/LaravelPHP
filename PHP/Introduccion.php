@@ -126,10 +126,10 @@ echo '<hr>';
 echo '<h2>Formularios</h2>';
 
 // Usando método GET
-$nombre2 = isset($_GET['nombre2']) ? $_GET['nombre2'] : 'No proporcionado';
-$edad1 = isset($_GET['edad1']) ? $_GET['edad1'] : 'No proporcionado';
-$sexo = isset($_GET['sexo']) ? $_GET['sexo'] : 'No especificado';
-$roles = isset($_GET['roles']) ? $_GET['roles'] : [];
+$nombre2 = $_GET['nombre2'];
+$edad1 = $_GET['edad1'];
+$sexo = $_GET['sexo'];
+$roles = $_GET['roles'];
 
 echo "<p>El nombre del usuario es: $nombre2</p>";
 echo "<p>La edad del usuario es: $edad1</p>";
@@ -146,10 +146,12 @@ if (is_array($roles) && !empty($roles)) {
 echo '</ul><hr>';
 
 // Usando método POST
-$nombre3 = isset($_POST['nombre3']) ? $_POST['nombre3'] : 'No proporcionado';
-$edad2 = isset($_POST['edad2']) ? $_POST['edad2'] : 'No proporcionado';
-$sexo2 = isset($_POST['sexo2']) ? $_POST['sexo2'] : 'No especificado';
-$roles2 = isset($_POST['roles2']) ? $_POST['roles2'] : [];
+$nombre3 = $_POST['nombre3'];
+$edad2 = $_POST['edad2'];
+$sexo2 = $_POST['sexo2'];
+$roles2 = $_POST['roles2'];
+$imagen = $_FILES['imagen'];
+$pach = $_SERVER['DOCUMENT_ROOT'] . '/php/imagenes/' . $imagen['name'];
 
 echo "<p>El nombre del usuario es: $nombre3</p>";
 echo "<p>La edad del usuario es: $edad2</p>";
@@ -166,21 +168,22 @@ if (is_array($roles2) && !empty($roles2)) {
 echo '</ul><hr>';
 
 // Procesar archivo subido
-if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {
-    echo '<p>Se ha subido la imagen: ' . $_FILES['imagen']['name'] . '</p>';
-    echo '<p>Tamaño: ' . $_FILES['imagen']['size'] . ' bytes</p>';
-} else {
-    echo '<p>No se ha subido ninguna imagen</p>';
-}
+echo $pach;
+var_dump($imagen);
+move_uploaded_file($imagen['tmp_name'], $pach);
+
+echo "<p> mensaje enviado: </p>";
+echo "<p> $mensaje </p>";
 
 echo '<hr>';
 
 // Usando método REQUEST
-$nombre4 = isset($_REQUEST['nombre4']) ? $_REQUEST['nombre4'] : 'No proporcionado';
-$edad3 = isset($_REQUEST['edad3']) ? $_REQUEST['edad3'] : 'No proporcionado';
+$nombre4 = $_REQUEST['nombre4'];
+$edad3 = $_REQUEST['edad3'];
 
 echo "<p>El nombre del usuario es: $nombre4</p>";
 echo "<p>La edad del usuario es: $edad3</p>";
+
 
 
 
