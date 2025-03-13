@@ -3,9 +3,10 @@
 class Persona {
     public $nombre, $apellido1, $apellido2, $edad;    
 
-    public function __construct($nombre, $apellido, $edad) {
+    public function __construct($nombre, $apellido1, $apellido2, $edad) {
         $this->nombre = strtolower($nombre);
-        $this->apellido1 = strtolower($apellido);
+        $this->apellido1 = strtolower($apellido1);
+        $this->apellido2 = strtolower($apellido2); // ✅ Corrección aquí
         $this->edad = $edad;
     }
 
@@ -17,21 +18,26 @@ class Persona {
         return ucwords($this->nombre);
     }
     
-    public function setApellido($apellido1, $apellido2) {
+    public function setApellidos($apellido1, $apellido2) {
         $this->apellido1 = $apellido1;
         $this->apellido2 = $apellido2; 
     }
     
-    public function getApellido(){
-        return $this->apellido1 ." ". $this->apellido2;
+    public function getApellidos(){
+        return $this->apellido1 . " " . $this->apellido2; // ✅ Corrección aquí
     }
-
 }
 
-class mexicano extends Persona {
-   public departamento, cuidad, estado;
+class Mexicano extends Persona {
+    public $departamento, $ciudad, $estado;
 }
 
-class estadounidense extends Persona {
-    public comunidad, region;
+class Estadounidense extends Persona {
+    public $comunidad, $region;
+
+    public function setApellidos($apellido1, $apellido2) {
+        parent::setApellidos($apellido1, $apellido2); // ✅ Corrección aquí
+    }
 }
+
+
