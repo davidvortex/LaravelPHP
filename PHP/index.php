@@ -58,8 +58,25 @@
     $a2 = ++$a1;
     echo "mi primer numero es igual a 5 pero se le aumenta: " . $a2 . "<br>";
 
+    declare(strict_type=1);
+    function SumarEntrero($entero1, $entero2){
+        return $entero1 + $entero2; 
+    }
+
+    $resultado2 = SumarEntrero(4, 5.3);
+
+    echo "El resusltado es: " . $resultado2;
+    echo "<br>";
+
+    // declare(strict_types = 1);
+
+    function summarEnteros(int $numeroentero1 , int $numeroentero2): int | float
+    {
+        return ($numeroentero1 + $numeroentero2)/2;
+    }
+
+    $resultado3 = SumarEntrero(4,6);
+
+    echo "la suma es:". $resultado3 ;
+
     
-
-
-
-?>
