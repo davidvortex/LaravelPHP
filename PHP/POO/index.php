@@ -21,7 +21,6 @@ $persona2->edad = 22;
 echo "El nombre de la persona 1 es: " . $persona1->getNombre() . ". Su Apellido es: " . $persona1->getApellidos() .".  Su edad que tiene: " . $persona1->edad;
 echo "<br>";
 echo "El nombre de la persona 2 es: " . $persona2->getNombre() . ". Su Apellidos son: " . $persona2->getApellidos() .".  Su edad que tiene: " . $persona2->edad;
-
 echo "<br>";
 
 /*
@@ -42,9 +41,11 @@ echo "<br>";
 // Prueba del código
 $persona1 = new Mexicano("Rodrigo", "Blitz", "López", 30);
 $persona1->setApellidos("Ramírez", "Gómez");
-
-echo "Nombre: " . $persona1->getNombre() . "<br>";
 echo "Apellidos: " . $persona1->getApellidos() . "<br>";
+
+$perosna2 = new Estadounidense("John", "Gonz", "Smith", 40);
+$persona2->setApellidos("Martinez", "Basques");
+echo "Apellidos: " . $persona2->getApellidos() . "<br>";
 
 
 

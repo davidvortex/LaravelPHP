@@ -6,7 +6,7 @@ class Persona {
     public function __construct($nombre, $apellido1, $apellido2, $edad) {
         $this->nombre = strtolower($nombre);
         $this->apellido1 = strtolower($apellido1);
-        $this->apellido2 = strtolower($apellido2); // ✅ Corrección aquí
+        $this->apellido2 = strtolower($apellido2); 
         $this->edad = $edad;
     }
 
@@ -24,19 +24,26 @@ class Persona {
     }
     
     public function getApellidos(){
-        return $this->apellido1 . " " . $this->apellido2; // ✅ Corrección aquí
+        return $this->apellido1 . " " . $this->apellido2;
     }
 }
 
 class Mexicano extends Persona {
     public $departamento, $ciudad, $estado;
+
+    public function setApellidos($apellido1, $apellido2) {
+        parent::setApellidos($apellido1, $apellido2);
+        echo "Los apellidos se asignarion correctamente<br>";
+
+    }
 }
 
 class Estadounidense extends Persona {
     public $comunidad, $region;
 
     public function setApellidos($apellido1, $apellido2) {
-        parent::setApellidos($apellido1, $apellido2); // ✅ Corrección aquí
+        $this->apellido1 = $apellido2;
+        $this->apellido2 = $apellido1; 
     }
 }
 
