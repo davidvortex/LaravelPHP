@@ -25,3 +25,9 @@ echo "<br>";
 
 echo "<br><br><br>";
 echo "<center>Hecho por David Jesus Coronado Reyes </center><br>";
+
+$MEXicano = new mexicano;
+$MEXicano->setNombre("Ruben Jose");
+
+$USA = new estadounidense;
+$USA->setNombre("John Dose");
