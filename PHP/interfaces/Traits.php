@@ -18,9 +18,10 @@ class Persona {
 
 trait Estoy {
     public function EstoyT() {
-        echo "Estoy ";
+        echo " Estoy ";
     }
 }
+
 
 trait Trabajando {
     public function trabajar() {
@@ -43,7 +44,7 @@ trait Europeo {
 }
 
 class MEX extends Persona {
-    use Latinoamericano; // ✅ Uso correcto del trait
+    use Latinoamericano; 
 
     public function saludar() {
         echo "Hola, ¿cómo estás?";
@@ -51,7 +52,10 @@ class MEX extends Persona {
 }
 
 class ESP extends Persona {
-    use Europeo; 
+    use Estoy, Trabajando{
+        Estoy::EstoyT insteafOf Trabajando;
+    }
+
 }
 
 $mexicano = new MEX;

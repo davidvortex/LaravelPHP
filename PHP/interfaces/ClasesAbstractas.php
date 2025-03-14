@@ -10,7 +10,6 @@ abstract class ClaseAbstractas
         echo $this->getValor() . "\n";
     }
 
-
 }
 
 class ClasesConcretas extends ClaseAbstractas
