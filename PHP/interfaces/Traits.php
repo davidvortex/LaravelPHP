@@ -58,7 +58,7 @@ class ESP extends Persona {
 
 }
 
-
+$mexicano = new MEX;
 $mexicano->saludar(); // Hola, ¿cómo estás?
 echo "<br>";
 $mexicano->saludarLatin(); // Hola
