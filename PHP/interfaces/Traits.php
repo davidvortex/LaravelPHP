@@ -53,12 +53,12 @@ class MEX extends Persona {
 
 class ESP extends Persona {
     use Estoy, Trabajando{
-        Estoy::EstoyT insteafOf Trabajando;
+        // Estoy::EstoyT  Trabajando;
     }
 
 }
 
-$mexicano = new MEX;
+
 $mexicano->saludar(); // Hola, ¿cómo estás?
 echo "<br>";
 $mexicano->saludarLatin(); // Hola

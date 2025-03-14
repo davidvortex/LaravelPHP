@@ -1,7 +1,8 @@
 <?php
 
-use A\Persona1.php;
-use B\Persona2.php;
+use A\Persona1;
+use B\Persona2;
+
 
 require_once('A/Persona1.php');
 require_once('B/Persona2.php');
