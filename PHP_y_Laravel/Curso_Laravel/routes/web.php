@@ -6,7 +6,7 @@ use App\Http\Controllers\PostContoller;
 
 
 // peticion tipo GET - obtener un recurso
-Route::get('/', [BackEndContoller::class, 'index']);
+Route::get('/prueba', [BackEndContoller::class, 'index']);
 
 Route::get('/post', [PostContoller::class, 'post']);
 
