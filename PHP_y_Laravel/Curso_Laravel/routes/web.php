@@ -1,12 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BackEndContoller;
+use App\Http\Controllers\PostContoller;
 
 
 // peticion tipo GET - obtener un recurso
-Route::get('/', function () {
-    return "Bienvenido a la página principal";
-});
+Route::get('/', [BackEndContoller::class, 'index']);
+
+Route::get('/post', [PostContoller::class, 'post']);
+
+Route::get('/post/create', [PostContoller::class, 'create']);
+
+Route::get('/post/{post}', [PostContoller::class, 'show']);
+
+
+
 
 Route::get('/contacto', function () {
     return "Hola desde la página de contacto";
@@ -32,7 +41,7 @@ Route::get('/musica/{cantante}/{cancion?}', function ($cantante, $cancion) {
         return "este cantante es: $cantante y la canción es: $cancion";
     }
 
-    
+
     return "este deporte es: $cantante y el balon es: $cancion";
 });
 
