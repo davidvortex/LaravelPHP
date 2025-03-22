@@ -5,14 +5,21 @@ use App\Http\Controllers\BackEndContoller;
 use App\Http\Controllers\PostContoller;
 
 
+
 // peticion tipo GET - obtener un recurso
 Route::get('/prueba', [BackEndContoller::class, 'index']);
 
 Route::get('/post', [PostContoller::class, 'post']);
 
+// lo coreecto cuando tenemos mas de una sola agregar el nombre
+Route::get('/post/index', [PostContoller::class, 'index']);
 Route::get('/post/create', [PostContoller::class, 'create']);
 
+
+// esto podria considerse opcional para redireccion no es buena practica
 Route::get('/post/{post}', [PostContoller::class, 'show']);
+
+
 
 
 
