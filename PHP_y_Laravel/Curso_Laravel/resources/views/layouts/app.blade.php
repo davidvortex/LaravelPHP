@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show Post</title>
+    <title>@yield('titulo')</title>
+
     {{-- fonteawesome --}}
     {{-- tipografia --}}
+
+    @stack('css')
 </head>
 <body>
-<header></header>
+    <header></header>
 
-    <h1>$$$$ Docuemtno para SHOW $$$$</h1>
+    @yield('content')
 
 
-<footer></footer>
+
+    <footer></footer>
 </body>
 </html>

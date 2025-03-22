@@ -6,13 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create post</title>
+    {{-- fonteawesome --}}
+    {{-- tipografia --}}
 
     <!-- Agregar el CDN de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body>
 
+<header></header>
     <h1 class="text-blue-600">Documento de Create :D</h1>
 
     <center>
@@ -35,6 +37,7 @@
 
     </center>
 
-</body>
 
+<footer></footer>
+</body>
 </html>
