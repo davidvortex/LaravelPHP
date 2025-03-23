@@ -56,10 +56,10 @@ Route::get('/musica/{cantante}/{cancion?}', function ($cantante, $cancion) {
 
 Route::get('prueba', function(){
     $prueba = new prueba;
-    $prueba->nombre = 'david jesus';
-    $prueba->apellidos = 'coronado reyes';
-    $prueba->edad = '24';
-    $prueba->ine = 'si';
+    $prueba->nombre = 'David Robtin';
+    $prueba->apellidos = 'coronado marques';
+    $prueba->edad = '23';
+    $prueba->ine = 'no';
 
     $prueba->save();
 
