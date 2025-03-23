@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BackEndContoller;
 use App\Http\Controllers\PostContoller;
-
-
+use App\Models\Prueba;
 
 // peticion tipo GET - obtener un recurso
 Route::get('/prueba', [BackEndContoller::class, 'index']);
@@ -55,7 +54,18 @@ Route::get('/musica/{cantante}/{cancion?}', function ($cantante, $cancion) {
 
 // peticion tipo PATCH - actualizar un registro
 
+Route::get('prueba', function(){
+    $prueba = new prueba;
+    $prueba->nombre = 'david jesus';
+    $prueba->apellidos = 'coronado reyes';
+    $prueba->edad = '24';
+    $prueba->ine = 'si';
 
+    $prueba->save();
+
+    return $prueba;
+
+});
 
 // peticion tipo DELETE - eliminar un registro
 
