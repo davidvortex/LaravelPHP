@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
+        // llamar nuestros factories
+        User::factory(10)->create();
+        // si no queremos asi podemos ir al seeder
+
         $user = new User();
         $user->name = 'david jesus coronado';
         $user->email = 'davidjesusu@hotmail.com';

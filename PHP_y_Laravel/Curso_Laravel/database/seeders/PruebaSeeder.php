@@ -25,5 +25,8 @@ class PruebaSeeder extends Seeder
             'edad' => 17,
             'ine' => 'no',
         ]);
+
+        // Crear 10 registros aleatorios con Factory
+        Prueba::factory()->count(10)->create();
     }
 }
