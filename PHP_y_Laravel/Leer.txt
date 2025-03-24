@@ -1,0 +1,6 @@
+aqui crearemos nuestros proyectos de laravel
+
+comando de linea para crear un proyecto de laravel
+composer create-project laravel/laravel example-app
+
+
