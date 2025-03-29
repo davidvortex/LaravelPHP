@@ -2,25 +2,30 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BackEndContoller;
+use App\Http\Controllers\CrearcrudController;
+use App\Http\Controllers\IndexcrudController;
 use App\Http\Controllers\PostContoller;
+use App\Http\Controllers\ShowcrudController;
+use App\Models\Indexcrud;
 use App\Models\Prueba;
+
+// crear crud
+Route::get('/indexcruds/index', [IndexcrudController::class, 'create'])->name('indexcruds.create');
+Route::post('/indexcruds/crear', [CrearcrudController::class, 'store'])->name('indexcruds.store');
+Route::get('/indexcruds/{id}', [ShowcrudController::class, 'show'])->name('indexcruds.show');
+Route::resource('indexcruds', IndexcrudController::class);
+
 
 // peticion tipo GET - obtener un recurso
 Route::get('/prueba', [BackEndContoller::class, 'index']);
-
 Route::get('/post', [PostContoller::class, 'post']);
 
 // lo coreecto cuando tenemos mas de una sola agregar el nombre
 Route::get('/post/index', [PostContoller::class, 'index']);
 Route::get('/post/create', [PostContoller::class, 'create']);
 
-
 // esto podria considerse opcional para redireccion no es buena practica
 Route::get('/post/{post}', [PostContoller::class, 'show']);
-
-
-
-
 
 
 Route::get('/contacto', function () {
