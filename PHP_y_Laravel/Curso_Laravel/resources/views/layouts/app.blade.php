@@ -7,6 +7,7 @@
 
     {{-- fonteawesome --}}
     {{-- tipografia --}}
+    <script src="https://cdn.tailwindcss.com"></script>
 
     @stack('css')
 </head>

@@ -1,19 +1,36 @@
 <?php
 
+use App\Http\Controllers\ShowcrudController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BackEndContoller;
 use App\Http\Controllers\CrearcrudController;
 use App\Http\Controllers\IndexcrudController;
 use App\Http\Controllers\PostContoller;
-use App\Http\Controllers\ShowcrudController;
-use App\Models\Indexcrud;
 use App\Models\Prueba;
 
 // crear crud
 Route::get('/indexcruds/index', [IndexcrudController::class, 'create'])->name('indexcruds.create');
-Route::post('/indexcruds/crear', [CrearcrudController::class, 'store'])->name('indexcruds.store');
-Route::get('/indexcruds/{id}', [ShowcrudController::class, 'show'])->name('indexcruds.show');
-Route::resource('indexcruds', IndexcrudController::class);
+Route::post('/indexcruds/crear', [CrearcrudController::class, 'store'])->name('indexcruds.crear');
+Route::post('/indexcruds/show', [ShowcrudController::class, 'store'])->name('indexcruds.crear');
+
+// Crear las rutas para el CRUD de indexcruds con el controlador IndexcrudController
+Route::resource('indexcruds', IndexcrudController::class)
+    // La opción 'parameters' reemplaza el nombre de la clave de la URL
+    // 'indexcruds' será reemplazado por 'post' en la URL.
+    ->parameters(['indexcruds' => 'post'])
+    // Aquí se personalizan los nombres de las rutas generadas
+    // Cambiamos 'indexcruds' por 'post' para que todas las rutas tengan el prefijo 'post'
+    ->names('post')
+    // La opción 'except' se utiliza para excluir rutas específicas del grupo de rutas generadas
+    // En este caso, estamos excluyendo la ruta de 'destroy', lo que significa que no se creará
+    // la ruta para eliminar un recurso (esto puede ser útil si no quieres permitir eliminaciones).
+    ->except(['destroy']);
+
+
+    // Ruta para mostrar todos los posts
+    Route::resource('posts', PostContoller::class);
+
+
 
 
 // peticion tipo GET - obtener un recurso
@@ -26,7 +43,6 @@ Route::get('/post/create', [PostContoller::class, 'create']);
 
 // esto podria considerse opcional para redireccion no es buena practica
 Route::get('/post/{post}', [PostContoller::class, 'show']);
-
 
 Route::get('/contacto', function () {
     return "Hola desde la página de contacto";
@@ -44,15 +60,11 @@ Route::get('/saludo/{deporte}/{balon}', function ($deporte, $balon) {
 });
 
 Route::get('/musica/{cantante}/{cancion?}', function ($cantante, $cancion) {
-
-
     if($cancion == null){
         return "este cantante es: $cantante y no tiene canción";
     }else{
         return "este cantante es: $cantante y la canción es: $cancion";
     }
-
-
     return "este deporte es: $cantante y el balon es: $cancion";
 });
 
@@ -65,12 +77,10 @@ Route::get('prueba', function(){
     $prueba->apellidos = 'coronado marques';
     $prueba->edad = '23';
     $prueba->ine = 'no';
-
     $prueba->save();
-
     return $prueba;
-
 });
+
 
 // peticion tipo DELETE - eliminar un registro
 
