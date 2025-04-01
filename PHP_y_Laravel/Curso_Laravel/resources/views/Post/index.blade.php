@@ -23,6 +23,12 @@
             <span class="font-medium">Información: </span> Este es un mensaje de información, puedes agregar más detalles aquí.
         </div>
 
+        <div class="mt-6 text-center">
+            <a href="create" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-200 ease-in-out transform hover:scale-105">
+                crear usuario
+            </a>
+        </div>
+
         <!-- Botón para acción -->
         <div class="mt-6 text-center">
             <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-200 ease-in-out transform hover:scale-105">

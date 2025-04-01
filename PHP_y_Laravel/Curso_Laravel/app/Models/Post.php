@@ -10,5 +10,5 @@ class Post extends Model
     use HasFactory;
 
     // Definir los campos que pueden ser asignados en masa
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['nombre', 'apellidos'];
 }

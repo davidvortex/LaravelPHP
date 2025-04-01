@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,23 +22,33 @@
 
         <!-- Alerta personalizada -->
         <div class="bg-blue-100 text-blue-800 p-4 rounded-md mb-4 flex items-center">
-            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m0-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z"></path>
             </svg>
             <span>Información: Asegúrate de llenar todos los campos correctamente.</span>
         </div>
 
-        <form action="#" method="POST" class="space-y-4">
+        <!-- Formulario -->
+        <form action="{{ route('posts.store') }}" method="POST" class="space-y-4">
+        @csrf  <!-- Protección contra CSRF -->
+
+            <!-- Campo Nombre -->
             <div>
-                <label class="block text-gray-700">Título del Post</label>
-                <input type="text" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ingrese el título">
+                <label class="block text-gray-700">Nombre</label>
+                <input type="text" name="nombre" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nombre">
             </div>
+
+            <!-- Campo Apellidos -->
             <div>
-                <label class="block text-gray-700">Descripción</label>
-                <textarea class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Ingrese la descripción"></textarea>
+                <label class="block text-gray-700">Apellidos</label>
+                <input type="text" name="apellidos" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Apellidos">
             </div>
+
+            <!-- Botón de envío -->
             <div>
-                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Guardar Post</button>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                    Guardar Post
+                </button>
             </div>
         </form>
     </div>

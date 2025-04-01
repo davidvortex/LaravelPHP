@@ -8,82 +8,59 @@ use Illuminate\Http\Request;
 
 class PostContoller extends Controller
 {
-    // Método para mostrar todos los posts
+    // Mostrar todos los posts
     public function index()
     {
-        // Obtener todos los posts desde la base de datos
         $posts = Post::all();
-        return view('Post.index', compact('posts'));
+        return view('post.index', compact('posts'));
     }
 
-    // Método para crear un nuevo post
+    // Mostrar el formulario de creación
     public function create()
     {
-        return view('Post.create');
+        return view('post.create');
     }
 
-    // Método para mostrar un post específico
-    public function show($post)
-    {
-        // Buscar el post en la base de datos por su ID
-        $post = Post::findOrFail($post);  // Buscar el post usando el ID
-        return view('Post.show', compact('post'));
-    }
-
-    // Método para almacenar un nuevo post
+    // Almacenar un nuevo post
     public function store(Request $request)
+{
+    Post::create($request->all());
+    return redirect()->route('post.index');
+}
+
+
+    // Mostrar un post específico (Usando Model Binding)
+    public function show(Post $post)
     {
-        // Validar los datos del formulario
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string|max:1000',
-        ]);
-
-        // Crear un nuevo post
-        Post::create([
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
-
-        // Redirigir a la lista de posts con un mensaje
-        return redirect()->route('posts.index')->with('success', 'Post creado correctamente');
+        return view('post.show', compact('post'));
     }
 
-    // Método para editar un post (aún no lo has definido)
-    public function edit($post)
+    // Mostrar el formulario de edición (Usando Model Binding)
+    public function edit(Post $post)
     {
-        $post = Post::findOrFail($post);
-        return view('Post.edit', compact('post'));
+        return view('post.edit', compact('post'));
     }
 
-    // Método para actualizar un post (aún no lo has definido)
-    public function update(Request $request, $post)
+    // Actualizar un post (Usando Model Binding)
+    public function update(Request $request, Post $post)
     {
-        $post = Post::findOrFail($post);
-
         // Validar los datos
         $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string|max:1000',
+            'nombre' => 'required|string',
+            'apellidos' => 'required|string',
         ]);
 
-        // Actualizar los datos del post
-        $post->update([
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
+        // Actualizar el post
+        $post->update($request->all());
 
         return redirect()->route('posts.index')->with('success', 'Post actualizado correctamente');
     }
 
-    // Método para eliminar un post (aún no lo has definido)
-    public function destroy($post)
+    // Eliminar un post (Usando Model Binding)
+    public function destroy(Post $post)
     {
-        $post = Post::findOrFail($post);
         $post->delete();
 
         return redirect()->route('posts.index')->with('success', 'Post eliminado correctamente');
     }
 }
-
-
