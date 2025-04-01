@@ -9,9 +9,9 @@ use App\Http\Controllers\PostContoller;
 use App\Models\Prueba;
 
 // crear crud
-Route::get('/indexcruds/index', [IndexcrudController::class, 'create'])->name('indexcruds.create');
-Route::post('/indexcruds/crear', [CrearcrudController::class, 'store'])->name('indexcruds.crear');
-Route::post('/indexcruds/show', [ShowcrudController::class, 'store'])->name('indexcruds.crear');
+Route::get('/indexcruds/index', [IndexcrudController::class, 'create'])->name('post.create');
+Route::post('/indexcruds/crear', [CrearcrudController::class, 'store'])->name('post.crear');
+Route::post('/indexcruds/show', [ShowcrudController::class, 'show'])->name('post.show');
 
 // Crear las rutas para el CRUD de indexcruds con el controlador IndexcrudController
 Route::resource('indexcruds', IndexcrudController::class)
