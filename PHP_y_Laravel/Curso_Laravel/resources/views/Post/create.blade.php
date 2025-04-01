@@ -20,6 +20,8 @@
     <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-lg">
         <h1 class="text-2xl font-bold text-blue-600 text-center mb-4">Crear Nuevo Post</h1>
 
+    {{__('client') }}
+
         <!-- Alerta personalizada -->
         <div class="bg-blue-100 text-blue-800 p-4 rounded-md mb-4 flex items-center">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
