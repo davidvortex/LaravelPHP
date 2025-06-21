@@ -7,6 +7,9 @@ use App\Http\Controllers\CrearcrudController;
 use App\Http\Controllers\IndexcrudController;
 use App\Http\Controllers\PostContoller;
 use App\Models\Prueba;
+use App\Http\Controllers\EmailController;
+use App\Mail\PostMail;
+use Illuminate\Support\Facades\Mail;
 
 // crear crud
 Route::get('/indexcruds/index', [IndexcrudController::class, 'create'])->name('post.create');
@@ -83,4 +86,9 @@ Route::get('prueba', function(){
 
 
 // peticion tipo DELETE - eliminar un registro
+
+// Rutas para enviar correos electrónicos
+Route::get('/mail/create', [EmailController::class, 'create'])->name('mail.create');
+Route::post('/mail/send', [EmailController::class, 'send'])->name('mail.send');
+
 
